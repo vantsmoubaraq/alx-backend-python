@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 """Module returns tuple from a lst including the elements and their length"""
 
