@@ -5,7 +5,7 @@ from typing import Tuple, Any, List, Union, Optional
 """Returns a tuple multiplied by a factor"""
 
 
-def zoom_array(lst: List[Any], factor: Union[int, float] = 2) -> List[Any]:
+def zoom_array(lst: List[Any], factor: int = 2) -> List[Any]:
     """Returns a tuple multiplied by a factor"""
     zoomed_in: List[Any] = [
         item for item in lst
