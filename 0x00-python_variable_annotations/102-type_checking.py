@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from typing import Tuple, Any, List
-
 """Returns a tuple multiplied by a factor"""
+
+from typing import Tuple, Any, List
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
