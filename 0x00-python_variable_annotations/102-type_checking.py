@@ -5,9 +5,9 @@ from typing import Tuple, Any, List, Union, Optional
 """Returns a tuple multiplied by a factor"""
 
 
-def zoom_array(lst: List[Any], factor: int = 2) -> List[Any]:
+def zoom_array(lst: List, factor: int = 2) -> List:
     """Returns a tuple multiplied by a factor"""
-    zoomed_in: List[Any] = [
+    zoomed_in: List = [
         item for item in lst
         for i in range(factor)
     ]
