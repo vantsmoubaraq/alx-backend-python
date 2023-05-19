@@ -29,14 +29,14 @@ class TestAccessNestedMap(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ({}, ("a",), KeyError),
-            ({"a": 1}, ("a", "b"), KeyError)
+            ({}, ("a",)),
+            ({"a": 1}, ("a", "b"))
         ]
     )
     def test_access_nested_map_exception(self, nested_map: Dict,
-                                         path: Tuple, expected: KeyError):
+                                         path: Tuple):
         """Tests raise of keyError exception"""
-        with self.assertRaises(expected):
+        with self.assertRaises(KeyError):
             access_nested_map(nested_map, path)
 
 
