@@ -45,8 +45,8 @@ class TestGetJson(unittest.TestCase):
 
     @parameterized.expand(
         [
-            ("http://example.com", {"payload": True}),
-            ("http://holberton.io", {"payload": False}),
+            ("http://example.com", {"payload": 5}),
+            ("http://holberton.io", {"payload": True}),
         ]
     )
     @unittest.mock.patch("requests.get")
