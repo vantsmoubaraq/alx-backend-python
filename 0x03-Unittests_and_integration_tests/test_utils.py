@@ -7,7 +7,7 @@ Module implements unit test
 import unittest
 from parameterized import parameterized, parameterized_class
 import requests
-from typing import Dict, Sequence, Any, Union
+from typing import Dict, Sequence, Any, Union, Tuple
 access_nested_map = __import__("utils").access_nested_map
 get_json = __import__("utils").get_json
 
