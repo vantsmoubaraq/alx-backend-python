@@ -7,7 +7,7 @@ Module implements unit test
 import unittest
 from parameterized import parameterized, parameterized_class
 import requests
-from typing import Dict, Sequence, Any
+from typing import Dict, Sequence, Any, Union
 access_nested_map = __import__("utils").access_nested_map
 get_json = __import__("utils").get_json
 
@@ -22,7 +22,7 @@ class TestAccessNestedMap(unittest.TestCase):
             ({"a": {"b": 2}}, ("a", "b"), 2),
         ]
     )
-    def test_access_nested_map(self, nested_map: Mapping,
-                               path: Sequence, expected: Any):
+    def test_access_nested_map(self, nested_map: Dict,
+                               path: Tuple, expected: Union[int, str]):
         """Tests access_nested_map function"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
