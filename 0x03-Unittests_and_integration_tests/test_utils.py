@@ -78,6 +78,6 @@ class TestMemoize(unittest.TestCase):
 
         with unittest.mock.patch.object(TestClass, "a_method") as mock_method:
             test_class = TestClass()
-            test_class.a_property()
-            test_class.a_property()
+            self.assertEqual(test_class.a_property(), 42)
+            self.assertEqual(test_class.a_property(), 42)
             mock_method.assert_called_once()
