@@ -7,15 +7,8 @@ Module tests GithubOrgClient methods
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
 from typing import Dict
-from client import (
-    GithubOrgClient,
-)
+from client import GithubOrgClient
 from parameterized import parameterized
-from utils import (
-    get_json,
-    access_nested_map,
-    memoize,
-)
 
 
 class TestGithubOrgClient(TestCase):
@@ -29,7 +22,7 @@ class TestGithubOrgClient(TestCase):
             ("abc", {"abc": True}),
         ]
     )
-    @patch("get_json")
+    @patch("client.get_json")
     def test_org(self, org: str, expected: Dict, mock_org: Mock):
         """Tests org method"""
         mock_org.return_value = expected
