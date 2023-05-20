@@ -18,8 +18,8 @@ class TestGithubOrgClient(TestCase):
 
     @parameterized.expand(
         [
-            ("google", {"google": True}),
-            ("abc", {"abc": True}),
+            ("google", {"name": "google"}),
+            ("abc", {"name": "abc"}),
         ]
     )
     @patch("client.get_json")
@@ -29,3 +29,6 @@ class TestGithubOrgClient(TestCase):
         obj = GithubOrgClient(org)
         self.assertEqual(obj.org, expected)
         mock_org.assert_called_once_with("https://api.github.com/orgs/" + org)
+    
+    def test_public_repos_url(TestCase):
+        """Method tests _public_repos_url"""
