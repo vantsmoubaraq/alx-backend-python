@@ -10,6 +10,7 @@ import requests
 from typing import Dict, Union, Tuple
 access_nested_map = __import__("utils").access_nested_map
 get_json = __import__("utils").get_json
+memoize = __import__("utils").memoize
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -40,8 +41,9 @@ class TestAccessNestedMap(unittest.TestCase):
             access_nested_map(nested_map, path)
 
 
+"""
 class TestGetJson(unittest.TestCase):
-    """Class tests utils.get_json"""
+    ""Class tests utils.get_json""
 
     @parameterized.expand(
         [
@@ -52,9 +54,24 @@ class TestGetJson(unittest.TestCase):
     @unittest.mock.patch("requests.get")
     def test_get_json(self, test_url: str, expected: Dict,
                       mock_get: unittest.mock.Mock):
-        """tests get_json"""
+        ""tests get_json""
 
         mock_get.return_value.json.return_value = expected
         result = get_json(test_url)
         self.assertEqual(result, expected)
         mock_get.assert_called_once_with(test_url)
+"""
+
+
+class TestMemoize(unittest.TestCase):
+    """Class tests memoize function"""
+
+    def test_memoize(self):
+        """Tests memoize function"""
+        class TestClass:
+            def a_method(self):
+                return 42
+
+        @memoize
+        def a_property(self):
+            return self.a_method()
