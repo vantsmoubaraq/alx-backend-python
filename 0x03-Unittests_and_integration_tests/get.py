@@ -3,5 +3,5 @@
 
 GithubOrgClient = __import__("client").GithubOrgClient
 
-obj = GithubOrgClient("abc")
-print(obj.org)
+obj = GithubOrgClient("google")
+print(obj.org())
