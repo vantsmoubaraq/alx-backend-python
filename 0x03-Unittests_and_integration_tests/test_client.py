@@ -30,7 +30,7 @@ class TestGithubOrgClient(TestCase):
         ]
     )
     @patch("get_json")
-    def test_org(self, org, expected: Dict, mock_org: Mock):
+    def test_org(self, org: str, expected: Dict, mock_org: Mock):
         """Tests org method"""
         mock_org.return_value = expected
         obj = GithubOrgClient(org)
