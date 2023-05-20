@@ -18,8 +18,8 @@ class TestGithubOrgClient(TestCase):
 
     @parameterized.expand(
         [
-            ("google", {"name": "google"}),
-            ("abc", {"name": "abc"}),
+            ("google", {"name": "Google"}),
+            ("abc", {"name": "Abc"}),
         ]
     )
     @patch("client.get_json")
