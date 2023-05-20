@@ -5,7 +5,7 @@ Module tests GithubOrgClient methods
 """
 
 from unittest import TestCase, mock
-from unittest.mock import patch, Mock
+from unittest.mock import patch, Mock, PropertyMock
 from typing import Dict
 from client import GithubOrgClient
 from parameterized import parameterized
@@ -29,6 +29,12 @@ class TestGithubOrgClient(TestCase):
         obj = GithubOrgClient(org)
         self.assertEqual(obj.org, expected)
         mock_org.assert_called_once_with("https://api.github.com/orgs/" + org)
-    
-    def test_public_repos_url(TestCase):
+
+    def test_public_repos_url(self):
         """Method tests _public_repos_url"""
+        expected = "https://api.github.com/orgs/repo"
+        payload = {"repos_url": "https://api.github.com/orgs/repo"}
+        with patch('client.GithubOrgClient.org', PropertyMock(
+                    return_value=payload)):
+            obj = GithubOrgClient("TechAccess")
+            self.assertEqual(obj._public_repos_url, expected)
