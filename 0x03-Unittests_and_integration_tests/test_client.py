@@ -18,7 +18,7 @@ class TestGithubOrgClient(TestCase):
 
     @parameterized.expand(
         [
-            ("google", {"name": "Google"}),
+            ("google", {"tydd": "xyrt"}),
             ("abc", {"name": "Abc"}),
         ]
     )
