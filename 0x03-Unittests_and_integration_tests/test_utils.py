@@ -7,7 +7,6 @@ Module implements unit test
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
 from parameterized import parameterized, parameterized_class
-import requests
 from typing import Dict, Union, Tuple
 access_nested_map = __import__("utils").access_nested_map
 get_json = __import__("utils").get_json
@@ -56,10 +55,10 @@ class TestGetJson(TestCase):
         mock_get = Mock()
         mock_get.json.return_value = expected
 
-        with patch("requests.get", return_value=mock_get):
+        with patch("requests.get", return_value=mock_get) as mock_request:
             result = get_json(test_url)
             self.assertEqual(result, expected)
-            mock_get.assert_called_once()
+            mock_request.assert_called_once()
 
 
 class TestMemoize(TestCase):
@@ -75,8 +74,10 @@ class TestMemoize(TestCase):
             def a_property(self):
                 return self.a_method()
 
-        test_class = TestClass()
-        with patch.object(TestClass, "a_method") as mock_method:
-            self.assertEqual(test_class.a_property, 42)
-            self.assertEqual(test_class.a_property, 42)
+        with patch.object(TestClass, "a_method",
+                          return_value=42) as mock_method:
+            test_class = TestClass()
+            result = test_class.a_property
+            result = test_class.a_property
+            self.assertEqual(result, 42)
             mock_method.assert_called_once()
